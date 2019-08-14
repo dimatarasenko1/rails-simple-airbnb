@@ -1,0 +1,22 @@
+<div class="row justify-content-center">
+  <% counter = 0 %>
+  <% @flats.each do |f| %>
+    <% counter += 1 %>
+    <div class="col-sm-3 border rounded bg-light text-left p-3 m-3">
+      <%= link_to flat_path(f) do %>
+        <h2><%= f.name %></h2>
+      <% end %>
+      <p><%= f.address %></p>
+      <p><%= f.price_per_night %></p>
+      <p><%= f.number_of_guests %></p>
+      <p><%= f.description %></p>
+      <%= link_to flat_path(f), method: :delete, data: { confirm: "Are you sure?" } do %>
+        Delete
+      <% end %>
+    </div>
+    <% if counter % 3 == 0 %>
+      </div>
+      <div class="row justify-content-center">
+  <% end %>
+<% end %>
+
